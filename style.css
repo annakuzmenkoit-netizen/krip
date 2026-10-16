@@ -104,3 +104,5 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 /* Original organization artwork keeps its proportions and colors. */
 .members .member-logo{height:86px;max-width:155px}.member-logo img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}.member-logo-krip{font-size:30px;font-weight:600;letter-spacing:2px;color:var(--earth)}
 @media(max-width:700px){.members .member-logo{height:74px;max-width:135px}.member-logo-krip{font-size:27px}}
+
+.member{isolation:isolate}.member-logo img.logo-blend-background{mix-blend-mode:multiply}
