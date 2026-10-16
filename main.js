@@ -32,7 +32,11 @@ members.forEach(({ name, logo }) => {
     logoSlot.append(image);
   } else {
     logoSlot.classList.add('member-logo-krip');
-    logoSlot.textContent = 'КРІП';
+    const fallback = document.createElement('img');
+    fallback.src = new URL('./assets/dill-flowering.svg', import.meta.url).href;
+    fallback.alt = '';
+    fallback.className = 'member-krip-image';
+    logoSlot.append(fallback);
   }
   logoSlot.setAttribute('aria-hidden', 'true');
   const label = document.createElement('h3');
@@ -185,3 +189,20 @@ eventTrack.addEventListener('keydown', event => {
 eventTrack.addEventListener('scroll', syncEventControls, { passive: true });
 new ResizeObserver(syncEventControls).observe(eventTrack);
 syncEventControls();
+
+// Keep the collapse control within reach throughout the expanded timeline.
+const historyDetails = document.querySelector('.history-details');
+const historySummary = historyDetails.querySelector('summary');
+function returnToHistory() {
+  if (historySummary.getBoundingClientRect().top < 0) {
+    historySummary.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+  }
+}
+historyDetails.addEventListener('toggle', () => {
+  if (!historyDetails.open) returnToHistory();
+});
+document.querySelector('.history-close').addEventListener('click', () => {
+  historyDetails.open = false;
+  historySummary.focus({ preventScroll: true });
+  returnToHistory();
+});
