@@ -6,3 +6,26 @@ const toggle = document.querySelector('.menu-toggle'); const nav = document.quer
 toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); nav.classList.toggle('open', open); });
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+// Decorative artwork remains separate from the brand mark and inaccessible to focus.
+for (const [selector, positions] of [
+  ['.hero', ['left', 'right']],
+  ['.about', ['left']],
+  ['.directions', ['right']],
+  ['.community', ['left', 'right']],
+  ['.events', ['right']],
+  ['.join', ['left', 'right']],
+]) {
+  const section = document.querySelector(selector);
+  const decoration = document.createElement('div');
+  decoration.className = 'botanical-layer';
+  decoration.setAttribute('aria-hidden', 'true');
+  for (const position of positions) {
+    const image = document.createElement('img');
+    image.src = new URL('./assets/dill-flowering.svg', import.meta.url).href;
+    image.alt = '';
+    image.className = `dill-spray ${position}`;
+    decoration.append(image);
+  }
+  section.prepend(decoration);
+}

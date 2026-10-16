@@ -19,3 +19,35 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 @media(max-width:1000px){.brand-logo{width:103px}.hero-visual{height:410px}.join-dill{right:2%;width:220px}.about:after{left:3%;width:90px}.header{gap:18px}}
 @media(max-width:700px){.header{height:85px}.brand-logo{width:91px;height:51px}.header-button{padding:11px 17px}.header nav{top:85px;background:var(--paper)}.hero{padding-top:30px}.hero:before{width:140px;left:-95px;top:30px}.hero-visual{height:330px;border-radius:100px 100px 6px 6px;margin-top:12px}.hero-visual>img{border-radius:90px 90px 3px 3px}.hero h1{font-size:49px}.photo-label{left:22px;top:25px}.about:after{display:none}.direction-grid article{padding:25px}.join{border-radius:65px 6px 6px 6px;padding:40px 7%}.join h2{font-size:37px}.join p{max-width:100%}.join-dill{width:150px;height:225px;right:-50px;bottom:-10px;opacity:.23}.footer-top .brand-logo{width:95px}.ticker .botanical-divider{font-size:23px}}
 .arrow-icon{display:inline-block;width:16px;height:16px;vertical-align:middle;flex-shrink:0}.button .arrow-icon{width:18px;height:18px}.card-icon .arrow-icon{width:40px;height:48px}.events h3 .arrow-icon{width:18px;height:18px}.hero-note .arrow-icon{width:22px;height:22px}
+
+/* Flowering dill and a quiet geometric rhythm inspired by Ukrainian embroidery. */
+:root{--earth:#75412d;--green:#0e7139;--olive:#98a474;--paper:#fafbef}
+.brand-wordmark{font-size:40px;font-weight:600;letter-spacing:2px;line-height:1;color:var(--earth)}
+.header{border-top:4px solid var(--green)}
+.hero,.about,.directions,.community,.events,.join{position:relative;isolation:isolate}
+.hero:before,.about:after{display:none}
+.botanical-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1;border-radius:inherit}
+.dill-spray{position:absolute;width:250px;height:410px;object-fit:contain;opacity:.29;transform-origin:50% 100%;animation:dill-sway 10s ease-in-out infinite alternate;will-change:transform}
+.dill-spray.left{left:-110px;bottom:-35px;--angle:25deg}
+.dill-spray.right{right:-75px;top:-80px;--angle:-25deg;animation-duration:13s;animation-delay:-5s}
+.hero .dill-spray.left{width:280px;height:440px;opacity:.32;left:-165px;bottom:55px}
+.hero .dill-spray.right{width:280px;height:430px;right:-85px;top:-160px;opacity:.28}
+.about .dill-spray{left:-55px;bottom:0;opacity:.43;width:230px}
+.community .dill-spray{opacity:.15;width:220px}.community .dill-spray.right{top:-140px}
+.directions .dill-spray{right:-60px;top:-60px;width:260px;opacity:.3}
+.events .dill-spray{right:-100px;top:-20px;opacity:.24}
+.join .dill-spray.right{right:-20px;top:20px;width:330px;height:490px;opacity:.55}
+.join .dill-spray.left{left:-120px;opacity:.17}
+.join-dill{display:none}
+.hero h1{font-weight:600}.hero h1 .serif{font-weight:500}.section-label{display:flex;align-items:center;gap:14px}.section-label:after{content:'';width:72px;height:18px;background:url('/assets/ornament.svg') center/contain no-repeat;opacity:.7}
+.ticker{background:#d7ddb1;position:relative;padding-top:25px;padding-bottom:25px}
+.ticker:before,.ticker:after{content:'';position:absolute;left:0;right:0;height:7px;background:url('/assets/ornament.svg') left center/60px 12px repeat-x;opacity:.45}.ticker:before{top:0}.ticker:after{bottom:0}
+.photo-sticker{background:#d7ddb1;border:1px solid #aab585;transform:rotate(-5deg);box-shadow:0 10px 25px #2749251f}
+.direction-grid article{box-shadow:0 8px 24px #31442106;transition:transform .3s,box-shadow .3s;border-radius:32px 8px 32px 8px}.direction-grid article:hover{transform:translateY(-6px);box-shadow:0 14px 28px #31442112}.direction-grid article:nth-child(2){background:#d7ddb1}
+.stats strong{font-family:Georgia,serif;font-size:48px}.stats{border-top:2px solid #b1bf96}
+.join{border-color:#b9c59c;background:#dce3bd}.join:after{content:'';position:absolute;left:7%;right:7%;bottom:21px;height:14px;background:url('/assets/ornament.svg') center/80px 16px repeat-x;opacity:.5;pointer-events:none}
+.footer-top{padding-top:15px}.footer-bottom{border-top:2px solid #b3be96}.socials a{transition:color .2s}.socials a:hover{color:var(--earth)}
+@keyframes dill-sway{from{transform:rotate(calc(var(--angle,0deg) - 3deg)) translateX(-3px)}to{transform:rotate(calc(var(--angle,0deg) + 3deg)) translateX(3px)}}
+@media(max-width:1000px){.about .dill-spray{opacity:.14;left:-115px}.brand-wordmark{font-size:34px}}
+@media(max-width:700px){.brand-wordmark{font-size:29px;letter-spacing:1px}.dill-spray{animation-duration:14s;width:175px;height:290px;opacity:.17}.hero .dill-spray.left{width:170px;height:280px;left:-125px;bottom:430px;opacity:.25}.hero .dill-spray.right{width:180px;right:-80px;top:-90px;height:290px;opacity:.22}.about .dill-spray{left:-130px;opacity:.15}.directions .dill-spray{width:170px;right:-85px;opacity:.22}.community .dill-spray.left{left:-120px}.join .dill-spray.right{width:210px;right:-120px;top:15px;height:340px;opacity:.23}.join .dill-spray.left{display:none}.section-label:after{width:50px;height:14px}.stats strong{font-size:38px}.ticker{padding-top:20px;padding-bottom:20px}}
+@media(prefers-reduced-motion:reduce){.dill-spray{animation:none;will-change:auto;transform:rotate(var(--angle,0deg))}.direction-grid article:hover{transform:none}}
