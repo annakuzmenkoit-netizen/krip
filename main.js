@@ -7,25 +7,31 @@ toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-// Decorative artwork remains separate from the brand mark and inaccessible to focus.
-for (const [selector, positions] of [
-  ['.hero', ['left', 'right']],
-  ['.about', ['left']],
-  ['.directions', ['right']],
-  ['.community', ['left', 'right']],
-  ['.events', ['right']],
-  ['.join', ['left', 'right']],
+// Each section has its own botanical composition; brand artwork stays separate.
+const botanicalArt = {
+  flowering: new URL('./assets/dill-flowering.svg', import.meta.url).href,
+  single: new URL('./assets/dill-single.svg', import.meta.url).href,
+  meadow: new URL('./assets/dill-meadow.svg', import.meta.url).href,
+  leafy: new URL('./assets/dill-leafy.svg', import.meta.url).href,
+  seeds: new URL('./assets/dill-seeds.svg', import.meta.url).href,
+};
+for (const [selector, plants] of [
+  ['.hero', [['left', 'leafy'], ['right', 'single']]],
+  ['.about', [['left', 'meadow']]],
+  ['.directions', [['right', 'seeds']]],
+  ['.community', [['left', 'single'], ['right', 'leafy']]],
+  ['.events', [['right', 'meadow']]],
+  ['.join', [['left', 'leafy'], ['right', 'flowering']]],
 ]) {
-  const section = document.querySelector(selector);
   const decoration = document.createElement('div');
   decoration.className = 'botanical-layer';
   decoration.setAttribute('aria-hidden', 'true');
-  for (const position of positions) {
+  for (const [position, variant] of plants) {
     const image = document.createElement('img');
-    image.src = new URL('./assets/dill-flowering.svg', import.meta.url).href;
+    image.src = botanicalArt[variant];
     image.alt = '';
-    image.className = `dill-spray ${position}`;
+    image.className = `dill-spray ${position} dill-${variant}`;
     decoration.append(image);
   }
-  section.prepend(decoration);
+  document.querySelector(selector).prepend(decoration);
 }
