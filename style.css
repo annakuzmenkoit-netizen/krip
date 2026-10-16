@@ -70,5 +70,6 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 @media(max-width:700px){.hero .dill-leafy{left:-120px;bottom:430px;width:170px;height:260px}.hero .dill-single{right:-65px;top:-70px;width:175px;height:260px}.about .dill-meadow{left:-125px;width:190px;opacity:.2}.directions .dill-seeds{right:-100px;top:-25px;width:210px;height:290px;opacity:.22}.community .dill-single{left:-130px;width:200px}.community .dill-leafy{right:-140px;top:-70px;width:215px}.events .dill-meadow{right:-145px;width:230px;opacity:.16}.join .dill-flowering{right:-120px;top:15px;width:210px;height:340px;opacity:.23}}
 
 /* Compact text-only direction cards. */
-.direction-grid h3{margin:20px 30px 12px 0}.direction-grid .card-number{top:24px;right:24px}.direction-grid article{padding-top:24px}
-@media(max-width:700px){.direction-grid h3{margin-top:12px}.direction-grid .card-number{top:23px}}
+.directions{padding-top:48px}.directions .section-heading{margin-bottom:24px}
+.direction-grid h3{margin:0 28px 12px 0}.direction-grid .card-number{top:20px;right:24px}.direction-grid article{padding-top:20px}
+@media(max-width:700px){.directions{padding-top:32px}.directions .section-heading{margin-bottom:20px}.direction-grid article{padding-top:18px}.direction-grid .card-number{top:18px}}
