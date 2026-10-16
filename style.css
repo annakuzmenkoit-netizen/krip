@@ -94,3 +94,9 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 /* Keep every participant visible in the portrait hero photograph. */
 .hero-visual>img{object-position:50% 62%}
 @media(max-width:700px){.hero-visual>img{object-position:50% 63%}}
+
+/* Editorial event carousel with a preview of the following card. */
+.events-carousel{min-width:0}.events-grid{display:flex;gap:26px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;border-radius:22px 22px 0 0}.events-grid::-webkit-scrollbar{display:none}.events-grid article{flex:0 0 calc((100% - 26px)/1.8);min-width:0;scroll-snap-align:start}.events-grid .event-image{height:260px}.events-controls{margin-top:24px}.events-counter{font-size:11px;color:var(--muted);min-width:45px;text-align:center}.event-dots{display:flex;align-items:center;gap:4px}.event-dot{width:28px;height:32px;padding:0;border:0;background:transparent;position:relative}.event-dot:after{content:'';position:absolute;width:7px;height:7px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:10px;background:#bcc7a7;transition:width .2s,background .2s}.event-dot[aria-current=true]:after{width:22px;background:var(--green)}
+@media(max-width:1000px){.events-grid article{flex-basis:calc((100% - 26px)/1.65)}.events-grid .event-image{height:235px}}
+@media(max-width:700px){.events-grid{gap:16px}.events-grid article{flex-basis:88%}.events-grid .event-image{height:230px}.events-controls{flex-wrap:nowrap;margin-top:18px}.events-grid h3{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.event-dot:after{transition:none}}

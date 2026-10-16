@@ -121,3 +121,49 @@ for (const [selector, plants] of [
   }
   document.querySelector(selector).prepend(decoration);
 }
+
+
+// Event posts advance on demand so visitors can read at their own pace.
+const eventTrack = document.querySelector('#events-track');
+const eventCards = [...eventTrack.querySelectorAll('article')];
+const eventDots = document.querySelector('.event-dots');
+let eventIndex = 0;
+const dots = eventCards.map((card, index) => {
+  card.setAttribute('role', 'group');
+  card.setAttribute('aria-roledescription', 'слайд');
+  card.setAttribute('aria-label', `${index + 1} із ${eventCards.length}`);
+  const dot = document.createElement('button');
+  dot.className = 'event-dot';
+  dot.setAttribute('aria-label', `Допис ${index + 1}: ${card.querySelector('h3').textContent.trim()}`);
+  dot.setAttribute('aria-controls', 'events-track');
+  dot.addEventListener('click', () => showEvent(index));
+  eventDots.append(dot);
+  return dot;
+});
+function eventPositions() {
+  const max = eventTrack.scrollWidth - eventTrack.clientWidth;
+  const start = eventCards[0].getBoundingClientRect().left;
+  return eventCards.map(card => Math.min(max, card.getBoundingClientRect().left - start));
+}
+function syncEventControls() {
+  const positions = eventPositions();
+  eventIndex = positions.reduce((best, left, index) =>
+    Math.abs(left - eventTrack.scrollLeft) < Math.abs(positions[best] - eventTrack.scrollLeft) ? index : best, 0);
+  dots.forEach((dot, index) => dot.setAttribute('aria-current', String(index === eventIndex)));
+  document.querySelector('.events-counter').textContent = `${eventIndex + 1} / ${eventCards.length}`;
+}
+function showEvent(index) {
+  const next = (index + eventCards.length) % eventCards.length;
+  eventTrack.scrollTo({ left: eventPositions()[next], behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+}
+document.querySelector('#events-prev').addEventListener('click', () => showEvent(eventIndex - 1));
+document.querySelector('#events-next').addEventListener('click', () => showEvent(eventIndex + 1));
+eventTrack.addEventListener('keydown', event => {
+  if (event.target === eventTrack && ['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+    event.preventDefault();
+    showEvent(event.key === 'Home' ? 0 : event.key === 'End' ? eventCards.length - 1 : eventIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+  }
+});
+eventTrack.addEventListener('scroll', syncEventControls, { passive: true });
+new ResizeObserver(syncEventControls).observe(eventTrack);
+syncEventControls();
