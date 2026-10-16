@@ -100,3 +100,7 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 @media(max-width:1000px){.events-grid article{flex-basis:calc((100% - 26px)/1.65)}.events-grid .event-image{height:235px}}
 @media(max-width:700px){.events-grid{gap:16px}.events-grid article{flex-basis:88%}.events-grid .event-image{height:230px}.events-controls{flex-wrap:nowrap;margin-top:18px}.events-grid h3{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.event-dot:after{transition:none}}
+
+/* Original organization artwork keeps its proportions and colors. */
+.members .member-logo{height:86px;max-width:155px}.member-logo img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}.member-logo-krip{font-size:30px;font-weight:600;letter-spacing:2px;color:var(--earth)}
+@media(max-width:700px){.members .member-logo{height:74px;max-width:135px}.member-logo-krip{font-size:27px}}

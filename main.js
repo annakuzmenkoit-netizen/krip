@@ -1,4 +1,21 @@
-const members = ['Центр розвитку та співпраці громад', 'Надія є!', 'Видимі жінки', 'Зелене серце', 'Народний молодіжний театр «АСКАЛ»', 'ЮФО СТІМ ХАБ', 'Європейський клуб', 'Жіночий бізнес-інкубатор', 'Жіночий Хаб 2.0', 'Перспектива', 'NOVA UNITED', 'Дівчата', 'Молоді-Є', 'Бодаква: відродження', 'Пліч-о-пліч', 'Платформа саморозвитку та неформальної освіти', 'Платформа Спільної Дії', 'Вирішальне. КРОК'].map(name => ({ name, logo: null }));
+const organizationLogos = {
+  "Центр розвитку та співпраці громад": new URL('./assets/organizations/community-development.png', import.meta.url).href,
+  "Надія є!": new URL('./assets/organizations/nadiya.jpg', import.meta.url).href,
+  "Видимі жінки": new URL('./assets/organizations/visible-women.jpg', import.meta.url).href,
+  "Зелене серце": new URL('./assets/organizations/green-heart.jpg', import.meta.url).href,
+  "Народний молодіжний театр «АСКАЛ»": new URL('./assets/organizations/askal.jpg', import.meta.url).href,
+  "ЮФО СТІМ ХАБ": new URL('./assets/organizations/ufo-stem.png', import.meta.url).href,
+  "Європейський клуб": new URL('./assets/organizations/european-club.jpg', import.meta.url).href,
+  "Жіночий бізнес-інкубатор": new URL('./assets/organizations/women-business.png', import.meta.url).href,
+  "Жіночий Хаб 2.0": new URL('./assets/organizations/women-hub.jpg', import.meta.url).href,
+  "Перспектива": new URL('./assets/organizations/perspektyva.png', import.meta.url).href,
+  "NOVA UNITED": new URL('./assets/organizations/nova-united.jpg', import.meta.url).href,
+  "Дівчата": new URL('./assets/organizations/divchata.png', import.meta.url).href,
+  "Бодаква: відродження": new URL('./assets/organizations/bodakva.png', import.meta.url).href,
+  "Пліч-о-пліч": new URL('./assets/organizations/plich-o-plich.jpg', import.meta.url).href,
+  "Платформа саморозвитку та неформальної освіти": new URL('./assets/organizations/self-development.png', import.meta.url).href,
+};
+const members = ['Центр розвитку та співпраці громад', 'Надія є!', 'Видимі жінки', 'Зелене серце', 'Народний молодіжний театр «АСКАЛ»', 'ЮФО СТІМ ХАБ', 'Європейський клуб', 'Жіночий бізнес-інкубатор', 'Жіночий Хаб 2.0', 'Перспектива', 'NOVA UNITED', 'Дівчата', 'Молоді-Є', 'Бодаква: відродження', 'Пліч-о-пліч', 'Платформа саморозвитку та неформальної освіти', 'Платформа Спільної Дії', 'Вирішальне. КРОК'].map(name => ({ name, logo: organizationLogos[name] ?? null }));
 const grid = document.querySelector('#members');
 const memberGroup = document.createElement('div');
 memberGroup.className = 'member-group';
@@ -13,8 +30,8 @@ members.forEach(({ name, logo }) => {
     image.alt = '';
     logoSlot.append(image);
   } else {
-    logoSlot.classList.add('member-logo-pending');
-    logoSlot.textContent = 'Логотип';
+    logoSlot.classList.add('member-logo-krip');
+    logoSlot.textContent = 'КРІП';
   }
   logoSlot.setAttribute('aria-hidden', 'true');
   const label = document.createElement('h3');
