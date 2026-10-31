@@ -139,8 +139,8 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 
 /* Compact project cards with a portrait crop centered on the group. */
 .events-grid{align-items:flex-start}
-.events-grid .event-image.project-photo{height:280px;overflow:hidden}
-.events-grid .project-photo img{height:100%;object-fit:cover;object-position:center 57%}
+.events-grid .event-image.project-photo,.events-grid .event-image.project-illustration{height:280px;overflow:hidden}
+.events-grid .project-photo img{height:100%;object-fit:cover;object-position:center 35%}
 .project-details{margin-top:16px}
 .project-details summary{width:fit-content;min-height:44px;display:flex;align-items:center;gap:10px;cursor:pointer;font-size:12px;font-weight:700;color:var(--ink);list-style:none}
 .project-details summary::-webkit-details-marker{display:none}
@@ -148,4 +148,4 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 .project-details[open] summary:after{content:'−'}
 .project-details summary:focus-visible{outline:3px solid #7b9824;outline-offset:4px}
 .project-details-body{padding-top:4px}
-@media(max-width:700px){.events-grid .event-image.project-photo{height:210px}.events-grid .event-meta{flex-wrap:wrap;gap:8px}.events-grid h3{line-height:1.35;overflow-wrap:break-word}.project-details{margin-top:10px}}
+@media(max-width:700px){.events-grid .event-image.project-photo,.events-grid .event-image.project-illustration{height:210px}.events-grid .event-meta{flex-wrap:wrap;gap:8px}.events-grid h3{line-height:1.35;overflow-wrap:break-word}.project-details{margin-top:10px}}
