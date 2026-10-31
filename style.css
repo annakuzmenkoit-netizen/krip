@@ -136,3 +136,6 @@ h2{color:var(--earth)}.about{position:relative}.about:after{content:'';position:
 
 .footer-email{display:inline-block;font-size:15px;color:#f0f3dc;border-bottom:1px solid #9eaf84;padding-bottom:5px;overflow-wrap:anywhere}.footer-email:hover{color:#d7ddb1}
 @media(max-width:700px){.footer-email{font-size:11px}}
+
+/* Preserve the full portrait photo in project cards. */
+.events-grid .event-image.project-photo{height:auto;overflow:hidden}.events-grid .project-photo img{height:auto}
