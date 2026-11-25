@@ -206,3 +206,31 @@ document.querySelector('.history-close').addEventListener('click', () => {
   historySummary.focus({ preventScroll: true });
   returnToHistory();
 });
+
+// Shareable project anchors reveal the full story, including on direct arrival.
+function openLinkedProject() {
+  const card = eventCards.find(card => `#${card.id}` === window.location.hash);
+  if (!card) return;
+  const details = card.querySelector('.project-details');
+  if (details) details.open = true;
+  const index = eventCards.indexOf(card);
+  eventTrack.scrollTo({ left: eventPositions()[index], behavior: 'instant' });
+  card.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' });
+  syncEventControls();
+}
+window.addEventListener('hashchange', openLinkedProject);
+requestAnimationFrame(openLinkedProject);
+
+document.querySelectorAll('.project-copy-link').forEach(button => {
+  button.addEventListener('click', async () => {
+    const url = new URL(window.location.href);
+    url.hash = button.dataset.project;
+    const status = button.parentElement.querySelector('.project-link-status');
+    try {
+      await navigator.clipboard.writeText(url.href);
+      status.textContent = 'Посилання скопійовано';
+    } catch {
+      status.textContent = `Скопіюйте посилання: ${url.href}`;
+    }
+  });
+});
